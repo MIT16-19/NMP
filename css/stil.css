@@ -1,0 +1,93 @@
+body {
+  background: #f5f5f5f5;
+  color: #333333;
+}
+
+
+.lista-item {
+  flex: 0 0 33.33%;
+  text-align: center;
+}
+.trosak-item {
+  flex: 0 0 33.33%;
+  text-align: center;
+  height: 2rem;
+}
+
+
+.prikazi-alert {
+  display: block;
+}
+
+
+.forma-plata {
+  border: 0.15rem solid green;
+  padding: 1rem;
+  border-radius: 0.25rem;
+}
+.forma-troskovi {
+  border: 0.15rem solid #bd2130;
+  padding: 1rem;
+  border-radius: 0.25rem;
+}
+.forma-opcije {
+  border: 0.15rem solid aqua;
+  padding: 1rem;
+  border-radius: 0.25rem;
+  margin-top: 4rem;
+}
+.forma-sort-troskovi {
+  border: 0.15rem solid yellow;
+  padding: 1rem;
+  border-radius: 0.25rem;
+  margin-top: 4rem;
+}
+
+
+.info-naslov {
+  font-size: 1.5rem;
+}
+.btn {
+	width: 100%;
+}
+
+
+.plata {
+  font-size: 1.2rem;
+  color: green;
+}
+.trosak {
+  font-size: 1.2rem;
+  color: #bd2130;
+}
+.saldo {
+  font-size: 1.2rem;
+}
+.plata-icon,
+.trosak-icon,
+.saldo-icon {
+  font-size: 2rem;
+  color: #117a8b;
+}
+
+
+@media screen and (min-width: 900px) {
+  .plata {
+    font-size: 2.2rem;
+    color: green;
+  }
+  .trosak {
+    font-size: 2.2rem;
+    color: #bd2130;
+  }
+  .saldo {
+    font-size: 2.2rem;
+  }
+  .plata-icon,
+  .trosak-icon,
+  .saldo-icon {
+    font-size: 3.1rem;
+    color: #117a8b;
+  }
+}
+
