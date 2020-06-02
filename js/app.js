@@ -66,7 +66,7 @@ function izracunajSaldo(){
 
 function najveciTrosak(){
 	if (troskovi.length > 0){
-		const najveciTr = troskovi.reduce((start, clan) => start.trosak > clan.trosak ? start : clan);
+		const najveciTr = troskovi.reduce((a, b) => parseFloat(a.trosak) > parseFloat(b.trosak) ? a : b);
 		alert("Najveci trošak je " + najveciTr.ime + " čiji je iznos " + najveciTr.trosak + " dinara");
 	} else {
 		alert("Niste uneli trošak!");
@@ -75,7 +75,7 @@ function najveciTrosak(){
 
 function najmanjiTrosak(){
 	if (troskovi.length > 0){
-		const najmanjiTr = troskovi.reduce((start, clan) => start.trosak < clan.trosak ? start : clan);
+		const najmanjiTr = troskovi.reduce((a, b) => parseFloat(a.trosak) < parseFloat(b.trosak) ? a : b);
 		alert("Najmanji trošak je " + najmanjiTr.ime + " čiji je iznos " + najmanjiTr.trosak + " dinara");
 	} else {
 		alert("Niste uneli trošak!");
@@ -107,7 +107,7 @@ function ucitajIzTroskovi(){
 function ucitajIzTroskoviSortAB(){
 	if (troskovi.length > 0){	
 		depoRez.innerHTML =	"";
-		const trosakSortAB = troskovi.reverse(uporediTroskove);
+		const trosakSortAB = troskovi.sort((a, b) => (parseFloat(a.trosak) < parseFloat(b.trosak)) ? 1 : -1);
 		console.log(trosakSortAB);
 		const trosakList = trosakSortAB.map(({ime, trosak, id}) => ('<div class="d-flex justify-content-between text-capitalize" id="lista-troskovi">' +
 															'<h5 class="trosak-item" id="lista-item-naziv">' + id + '</h5>' + 
@@ -122,7 +122,7 @@ function ucitajIzTroskoviSortAB(){
 function ucitajIzTroskoviSortBA(){
 	if (troskovi.length > 0){	
 		depoRez.innerHTML =	"";
-		const trosakSortBA = troskovi.sort(uporediTroskove);
+		const trosakSortBA = troskovi.sort((a, b) => (parseFloat(a.trosak) > parseFloat(b.trosak)) ? 1 : -1);
 		console.log(trosakSortBA);
 		const trosakList = trosakSortBA.map(({ime, trosak, id}) => ('<div class="d-flex justify-content-between text-capitalize" id="lista-troskovi">' +
 															'<h5 class="trosak-item" id="lista-item-naziv">' + id + '</h5>' + 
@@ -132,17 +132,4 @@ function ucitajIzTroskoviSortBA(){
 	} else { 
 		alert("Niste uneli trošak!");
 	}
-}
-
-function uporediTroskove(a, b) {
-  const trosakA = a.trosak;
-  const trosakB = b.trosak;
-
-  let poredjenje = 0;
-  if (trosakA > trosakB) {
-    poredjenje = 1;
-  } else if (trosakA < trosakB) {
-    poredjenje = -1;
-  }
-  return poredjenje;
 }
