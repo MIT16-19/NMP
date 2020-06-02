@@ -32,8 +32,8 @@ trosakForma.addEventListener("submit", function(event){
 opcijeFormaNajv.addEventListener("click", najveciTrosak);
 opcijeFormaNajm.addEventListener("click", najmanjiTrosak);
 opcijeFormaPro.addEventListener("click", prosecanTrosak);
-opcijeFormaVeciManji.addEventListener("click", najmanjiTrosak);
-opcijeFormaManjVeci.addEventListener("click", prosecanTrosak);
+opcijeFormaVeciManji.addEventListener("click", ucitajIzTroskoviSortAB);
+opcijeFormaManjVeci.addEventListener("click", ucitajIzTroskoviSortBA);
 
 function dodajPlatu() {
 	const plata = plataIn.value;	
@@ -91,17 +91,58 @@ function prosecanTrosak(){
 	}
 }
 
-
 function ucitajIzTroskovi(){
 	if (troskovi.length > 0){	
 		depoRez.innerHTML =	"";
-		const test = troskovi.map(({ime, trosak, id}) => ('<div class="d-flex justify-content-between text-capitalize" id="lista-troskovi">' +
+		const trosakList = troskovi.map(({ime, trosak, id}) => ('<div class="d-flex justify-content-between text-capitalize" id="lista-troskovi">' +
 															'<h5 class="trosak-item" id="lista-item-naziv">' + ime + '</h5>' + 
 															'<h5 class="trosak-item" id="lista-item-naziv" id="idChild">' + trosak + '</h5>' +	
 															'<h5 class="trosak-item" id="lista-item-naziv" id="idChild">' + id + '</h5></div>'));
-		depoRez.innerHTML += test;
-		//console.log(test);
+		depoRez.innerHTML += trosakList;
 	} else { 
 		alert("Niste uneli trošak!");
 	}
+}
+
+function ucitajIzTroskoviSortAB(){
+	if (troskovi.length > 0){	
+		depoRez.innerHTML =	"";
+		const trosakSortAB = troskovi.reverse(uporediTroskove);
+		console.log(trosakSortAB);
+		const trosakList = trosakSortAB.map(({ime, trosak, id}) => ('<div class="d-flex justify-content-between text-capitalize" id="lista-troskovi">' +
+															'<h5 class="trosak-item" id="lista-item-naziv">' + ime + '</h5>' + 
+															'<h5 class="trosak-item" id="lista-item-naziv" id="idChild">' + trosak + '</h5>' +	
+															'<h5 class="trosak-item" id="lista-item-naziv" id="idChild">' + id + '</h5></div>'));
+		depoRez.innerHTML += trosakList;
+	} else { 
+		alert("Niste uneli trošak!");
+	}
+}
+
+function ucitajIzTroskoviSortBA(){
+	if (troskovi.length > 0){	
+		depoRez.innerHTML =	"";
+		const trosakSortBA = troskovi.sort(uporediTroskove);
+		console.log(trosakSortBA);
+		const trosakList = trosakSortBA.map(({ime, trosak, id}) => ('<div class="d-flex justify-content-between text-capitalize" id="lista-troskovi">' +
+															'<h5 class="trosak-item" id="lista-item-naziv">' + ime + '</h5>' + 
+															'<h5 class="trosak-item" id="lista-item-naziv" id="idChild">' + trosak + '</h5>' +	
+															'<h5 class="trosak-item" id="lista-item-naziv" id="idChild">' + id + '</h5></div>'));
+		depoRez.innerHTML += trosakList;
+	} else { 
+		alert("Niste uneli trošak!");
+	}
+}
+
+function uporediTroskove(a, b) {
+  const trosakA = a.trosak;
+  const trosakB = b.trosak;
+
+  let poredjenje = 0;
+  if (trosakA > trosakB) {
+    poredjenje = 1;
+  } else if (trosakA < trosakB) {
+    poredjenje = -1;
+  }
+  return poredjenje;
 }
