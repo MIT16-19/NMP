@@ -34,6 +34,14 @@ opcijeFormaNajm.addEventListener("click", najmanjiTrosak);
 opcijeFormaPro.addEventListener("click", prosecanTrosak);
 opcijeFormaVeciManji.addEventListener("click", ucitajIzTroskoviSortAB);
 opcijeFormaManjVeci.addEventListener("click", ucitajIzTroskoviSortBA);
+sortFormaManje.addEventListener("click", function(event){
+  event.preventDefault();
+  ucitajIzTroskoviVeciOd();
+}); 
+sortFormaVece.addEventListener("click", function(event){
+  event.preventDefault();
+  ucitajIzTroskoviVeciOd();
+}); 
 
 function dodajPlatu() {
 	const plata = plataIn.value;	
@@ -125,6 +133,34 @@ function ucitajIzTroskoviSortBA(){
 		const trosakSortBA = troskovi.sort((a, b) => (parseFloat(a.trosak) > parseFloat(b.trosak)) ? 1 : -1);
 		console.log(trosakSortBA);
 		const trosakList = trosakSortBA.map(({ime, trosak, id}) => ('<div class="d-flex justify-content-between text-capitalize" id="lista-troskovi">' +
+															'<h5 class="trosak-item" id="lista-item-naziv">' + id + '</h5>' + 
+															'<h5 class="trosak-item" id="lista-item-naziv" id="idChild">' + ime + '</h5>' +	
+															'<h5 class="trosak-item" id="lista-item-naziv" id="idChild">' + trosak + '</h5></div>'));
+		depoRez.innerHTML += trosakList.join("");;
+	} else { 
+		alert("Niste uneli trošak!");
+	}
+}
+
+function ucitajIzTroskoviVeciOd(){
+	if (troskovi.length > 0){	
+		depoRez.innerHTML =	"";
+		const trosakSortVeciOd = troskovi.filter(a => parseFloat(a.trosak) <= parseFloat(sortIn.value)); 
+		const trosakList = trosakSortVeciOd.map(({ime, trosak, id}) => ('<div class="d-flex justify-content-between text-capitalize" id="lista-troskovi">' +
+															'<h5 class="trosak-item" id="lista-item-naziv">' + id + '</h5>' + 
+															'<h5 class="trosak-item" id="lista-item-naziv" id="idChild">' + ime + '</h5>' +	
+															'<h5 class="trosak-item" id="lista-item-naziv" id="idChild">' + trosak + '</h5></div>'));
+		depoRez.innerHTML += trosakList.join("");;
+	} else { 
+		alert("Niste uneli trošak!");
+	}
+}
+
+function ucitajIzTroskoviManjiOd(){
+	if (troskovi.length > 0){	
+		depoRez.innerHTML =	"";
+		const trosakSortManjiOd = troskovi.filter(a => parseFloat(a.trosak) >= parseFloat(sortIn.value)); 
+		const trosakList = trosakSortManjiOd.map(({ime, trosak, id}) => ('<div class="d-flex justify-content-between text-capitalize" id="lista-troskovi">' +
 															'<h5 class="trosak-item" id="lista-item-naziv">' + id + '</h5>' + 
 															'<h5 class="trosak-item" id="lista-item-naziv" id="idChild">' + ime + '</h5>' +	
 															'<h5 class="trosak-item" id="lista-item-naziv" id="idChild">' + trosak + '</h5></div>'));
