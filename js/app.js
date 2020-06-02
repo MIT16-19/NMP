@@ -85,7 +85,7 @@ function najmanjiTrosak(){
 function prosecanTrosak(){
 	if (troskovi.length > 0){
 		const trosakProsek = troskovi.map(({ trosak }) => trosak).reduce(saberiTroskove)/troskovi.length;
-		alert("Iznos prosečnog troška je " + trosakProsek + " dinara");
+		alert("Iznos prosečnog troška je " + trosakProsek.toFixed(2) + " dinara");
 	} else {
 		alert("Niste uneli trošak!");
 	}
@@ -95,10 +95,10 @@ function ucitajIzTroskovi(){
 	if (troskovi.length > 0){	
 		depoRez.innerHTML =	"";
 		const trosakList = troskovi.map(({ime, trosak, id}) => ('<div class="d-flex justify-content-between text-capitalize" id="lista-troskovi">' +
-															'<h5 class="trosak-item" id="lista-item-naziv">' + ime + '</h5>' + 
-															'<h5 class="trosak-item" id="lista-item-naziv" id="idChild">' + trosak + '</h5>' +	
-															'<h5 class="trosak-item" id="lista-item-naziv" id="idChild">' + id + '</h5></div>'));
-		depoRez.innerHTML += trosakList;
+															'<h5 class="trosak-item" id="lista-item-naziv">' + id + '</h5>' + 
+															'<h5 class="trosak-item" id="lista-item-naziv" id="idChild">' + ime + '</h5>' +	
+															'<h5 class="trosak-item" id="lista-item-naziv" id="idChild">' + trosak + '</h5></div>'));
+		depoRez.innerHTML += trosakList.join("");
 	} else { 
 		alert("Niste uneli trošak!");
 	}
@@ -110,10 +110,10 @@ function ucitajIzTroskoviSortAB(){
 		const trosakSortAB = troskovi.reverse(uporediTroskove);
 		console.log(trosakSortAB);
 		const trosakList = trosakSortAB.map(({ime, trosak, id}) => ('<div class="d-flex justify-content-between text-capitalize" id="lista-troskovi">' +
-															'<h5 class="trosak-item" id="lista-item-naziv">' + ime + '</h5>' + 
-															'<h5 class="trosak-item" id="lista-item-naziv" id="idChild">' + trosak + '</h5>' +	
-															'<h5 class="trosak-item" id="lista-item-naziv" id="idChild">' + id + '</h5></div>'));
-		depoRez.innerHTML += trosakList;
+															'<h5 class="trosak-item" id="lista-item-naziv">' + id + '</h5>' + 
+															'<h5 class="trosak-item" id="lista-item-naziv" id="idChild">' + ime + '</h5>' +	
+															'<h5 class="trosak-item" id="lista-item-naziv" id="idChild">' + trosak + '</h5></div>'));
+		depoRez.innerHTML += trosakList.join("");;
 	} else { 
 		alert("Niste uneli trošak!");
 	}
@@ -125,10 +125,10 @@ function ucitajIzTroskoviSortBA(){
 		const trosakSortBA = troskovi.sort(uporediTroskove);
 		console.log(trosakSortBA);
 		const trosakList = trosakSortBA.map(({ime, trosak, id}) => ('<div class="d-flex justify-content-between text-capitalize" id="lista-troskovi">' +
-															'<h5 class="trosak-item" id="lista-item-naziv">' + ime + '</h5>' + 
-															'<h5 class="trosak-item" id="lista-item-naziv" id="idChild">' + trosak + '</h5>' +	
-															'<h5 class="trosak-item" id="lista-item-naziv" id="idChild">' + id + '</h5></div>'));
-		depoRez.innerHTML += trosakList;
+															'<h5 class="trosak-item" id="lista-item-naziv">' + id + '</h5>' + 
+															'<h5 class="trosak-item" id="lista-item-naziv" id="idChild">' + ime + '</h5>' +	
+															'<h5 class="trosak-item" id="lista-item-naziv" id="idChild">' + trosak + '</h5></div>'));
+		depoRez.innerHTML += trosakList.join("");;
 	} else { 
 		alert("Niste uneli trošak!");
 	}
