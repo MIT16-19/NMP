@@ -8,6 +8,7 @@ const opcijeFormaVeciManji = document.getElementById("najvecinajmanj");
 const opcijeFormaManjVeci = document.getElementById("najmanjnajveci"); 
 const sortFormaManje = document.getElementById("forma-sortmanje-trosak-btn");
 const sortFormaVece = document.getElementById("forma-sortvece-trosak-btn");
+const depoRez = document.getElementById("lista-item");
 
 const plataIn = document.getElementById("plata-input");
 const imeTroskaIn = document.getElementById("ime-troska-input");
@@ -44,13 +45,15 @@ function dodajPlatu() {
 function dodajTrosak() {
 	troskovi.push({
 		ime: imeTroskaIn.value,
-		trosak: trosakIn.value
+		trosak: trosakIn.value,
+		id: troskovi.length + 1
 	});
 	const trosak = troskovi.map(({ trosak }) => trosak).reduce(saberiTroskove);
 	trosakOut.innerHTML = trosak;
 	imeTroskaIn.value = "";
 	trosakIn.value = "";
 	izracunajSaldo();
+	ucitajIzTroskovi();
 }
 
 function saberiTroskove(start, clan) {
@@ -90,9 +93,15 @@ function prosecanTrosak(){
 
 
 function ucitajIzTroskovi(){
-	if (troskovi.length > 0){
-		
-	} else {
+	if (troskovi.length > 0){	
+		depoRez.innerHTML =	"";
+		const test = troskovi.map(({ime, trosak, id}) => ('<div class="d-flex justify-content-between text-capitalize" id="lista-troskovi">' +
+															'<h5 class="trosak-item" id="lista-item-naziv">' + ime + '</h5>' + 
+															'<h5 class="trosak-item" id="lista-item-naziv" id="idChild">' + trosak + '</h5>' +	
+															'<h5 class="trosak-item" id="lista-item-naziv" id="idChild">' + id + '</h5></div>'));
+		depoRez.innerHTML += test;
+		//console.log(test);
+	} else { 
 		alert("Niste uneli trošak!");
 	}
 }
