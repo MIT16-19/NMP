@@ -40,7 +40,7 @@ sortFormaManje.addEventListener("click", function(event){
 }); 
 sortFormaVece.addEventListener("click", function(event){
   event.preventDefault();
-  ucitajIzTroskoviVeciOd();
+  ucitajIzTroskoviManjiOd();
 }); 
 
 function dodajPlatu() {
@@ -116,7 +116,6 @@ function ucitajIzTroskoviSortAB(){
 	if (troskovi.length > 0){	
 		depoRez.innerHTML =	"";
 		const trosakSortAB = troskovi.sort((a, b) => (parseFloat(a.trosak) < parseFloat(b.trosak)) ? 1 : -1);
-		console.log(trosakSortAB);
 		const trosakList = trosakSortAB.map(({ime, trosak, id}) => ('<div class="d-flex justify-content-between text-capitalize" id="lista-troskovi">' +
 															'<h5 class="trosak-item" id="lista-item-naziv">' + id + '</h5>' + 
 															'<h5 class="trosak-item" id="lista-item-naziv" id="idChild">' + ime + '</h5>' +	
@@ -131,7 +130,6 @@ function ucitajIzTroskoviSortBA(){
 	if (troskovi.length > 0){	
 		depoRez.innerHTML =	"";
 		const trosakSortBA = troskovi.sort((a, b) => (parseFloat(a.trosak) > parseFloat(b.trosak)) ? 1 : -1);
-		console.log(trosakSortBA);
 		const trosakList = trosakSortBA.map(({ime, trosak, id}) => ('<div class="d-flex justify-content-between text-capitalize" id="lista-troskovi">' +
 															'<h5 class="trosak-item" id="lista-item-naziv">' + id + '</h5>' + 
 															'<h5 class="trosak-item" id="lista-item-naziv" id="idChild">' + ime + '</h5>' +	
